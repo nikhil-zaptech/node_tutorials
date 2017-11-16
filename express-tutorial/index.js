@@ -33,7 +33,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 //START - API for adding new user
 app.post('/add-user', function (request, response) {
 
-    let username = request.body.username;
+    var username = request.body.username;
     
     if(username != '' && username!=undefined){
         
@@ -45,9 +45,6 @@ app.post('/add-user', function (request, response) {
             userArr.push(data);
             response.send(userArr);
         }
-    } else {
-        let dataErr = {"code":"0","status":"error","message":"Please enter required fields"};
-        response.send(dataErr);
     }
 });
 //END - API for adding new user
@@ -63,8 +60,5 @@ app.delete('/delete-user/:id', function (request, response) {
         }
     }
 });
-
-
 //END - API for deleting a user
-
 app.listen(3000, () => console.log('Hello...!!! Port 3000!'))
