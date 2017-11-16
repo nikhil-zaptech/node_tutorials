@@ -52,11 +52,18 @@ app.post('/add-user', function (request, response) {
 });
 //END - API for adding new user
 
-app.delete('/delete-user/:id', function (request, response) {
-    
-    
-});
 //START - API for deleting a user
+app.delete('/delete-user/:id', function (request, response) {
+    var id= request.params.id;
+    if(id!="" && id!=undefined){
+        var index = userArr.findIndex(user => user.id==id);
+        if(index>=0){
+            userArr.splice(index,1);
+            response.send(userArr);
+        }
+    }
+});
+
 
 //END - API for deleting a user
 
